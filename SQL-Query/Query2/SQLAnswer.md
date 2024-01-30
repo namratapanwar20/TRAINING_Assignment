@@ -13,9 +13,8 @@ where
       order_status 
     where 
       status_id = "ORDER_COMPLETED" 
-      and MONTH(status_datetime)= 12 
-      and YEAR(status_datetime)= 2023 
-      and DAY(status_datetime)>= 5
+      and STATUS_DATETIME >= '2024-01-01' - INTERVAL 25 DAY 
+      AND STATUS_DATETIME < '2024-01-01'
   ) 
   and origin_facility_id in (
     select 
@@ -26,4 +25,5 @@ where
       facility_type_id = "RETAIL_STORE" 
       or facility_type_id = "OUTLET_STORE"
   );
+
 ```
