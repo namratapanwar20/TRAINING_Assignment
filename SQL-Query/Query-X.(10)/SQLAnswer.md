@@ -34,10 +34,10 @@ select
   pa1.city as BILL_CITY, 
   pa1.postal_code as BILL_POSTALCODE, 
   pa2.address1 as SHIP_ADDRESS1, 
-  pa1.address2 as SHIP_ADDRESS2, 
-  pa1.country_geo_id as SHIP_COUNTRY, 
-  pa1.city as SHIP_CITY, 
-  pa1.postal_code as SHIP_POSTALCODE 
+  pa2.address2 as SHIP_ADDRESS2, 
+  pa2.country_geo_id as SHIP_COUNTRY, 
+  pa2.city as SHIP_CITY, 
+  pa2.postal_code as SHIP_POSTALCODE 
 from 
   order_header oh 
   join order_item oi on oi.order_id = oh.order_id 
