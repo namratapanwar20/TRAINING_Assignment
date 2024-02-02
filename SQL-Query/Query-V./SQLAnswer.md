@@ -21,8 +21,8 @@ from
 where 
   Month(os.status_datetime)= 7 
   and Year(os.status_datetime)= 2023 
-  and od.order_identification_type_id = "SHOPIFY_ORDER_ID" 
+  and od.order_identification_type_id = "SHOPIFY_ORD_ID" 
   and os.status_id = "ITEM_COMPLETED" 
-  and gd.good_identification_type_id = "SHOPIFY_PRODUCT_ID";
+  and gd.good_identification_type_id = "SHOPIFY_PROD_ID";
 
 ```
