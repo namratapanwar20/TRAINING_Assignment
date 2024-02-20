@@ -1,6 +1,9 @@
-**12.Get all the appeasements in July month.<br>
-a.How do we differentiate between returns and appeasements?<br>
-b.Get all the below fields <br>
+**12.Get all the appeasements in July month.<br>**
+
+**a.How do we differentiate between returns and appeasements?<br>**
+--> Return refers to the process where customers send back their purchased items due to reasons such as defects, damage or wrong product.  Whereas appeasements refers to the process of making concessions to dissatisfied customers in the form of discounts, refunds or vouchers to maintain the relationship with the customer.  
+
+**b.Get all the below fields <br>**
 (Appeasements in return_adjustment_type)<br>
 RETURN_ID<br>
 ENTRY_DATE <br>
