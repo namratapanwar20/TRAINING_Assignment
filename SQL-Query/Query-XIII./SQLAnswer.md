@@ -1,4 +1,4 @@
-**13. Facility wise Revenue for (SM Store): **
+**13. Facility wise Revenue for (SM Store):**
 ```sql
 select 
   sum(oi.unit_price * oi.quantity) as total_unit, 
