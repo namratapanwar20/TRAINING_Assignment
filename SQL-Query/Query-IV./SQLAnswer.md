@@ -1,17 +1,13 @@
 **4. Shipped units By Location:**
 ```sql
 select 
-  count(FACILITY_ID) facilities, 
-  FACILITY_TYPE_ID 
+  s.origin_facility_id,
+  sum(si.quantity)
 from 
-  facility 
+  shipment s 
+  join shipment_item si on s.shipment_id = si.shipment_id 
 where 
-  FACILITY_ID in (
-    select 
-      DESTINATION_FACILITY_ID 
-    from 
-      shipment
-  ) 
+  s.status_id = "SHIPMENT_SHIPPED" 
 group by 
-  FACILITY_TYPE_ID;
+  s.origin_facility_id;
 ```
