@@ -20,7 +20,7 @@ from
 where 
   pt.is_physical = "Y" 
   and f.facility_type_id = "WAREHOUSE" 
-  and Month(os.status_datetime)= 8 
+  and Month(os.status_datetime)= 9 
   and Year(os.status_datetime)= 2023 
   and os.status_id = "ITEM_COMPLETED";
 
