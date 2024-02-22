@@ -9,7 +9,6 @@ from
   join order_status os on os.order_id = oh.order_id  and oh.status_id=os.status_id
   join order_item_ship_group_assoc oisga on oisga.order_id = oi.order_id 
   and oisga.order_item_seq_id = oi.order_item_seq_id 
-  and oisga.order_item_seq_id = oi.order_item_seq_id 
   join order_item_ship_group oisg on oisg.order_id = oisga.order_id 
   and oisg.ship_group_seq_id = oisga.ship_group_seq_id 
   join facility f on f.facility_id = oisg.facility_id 
