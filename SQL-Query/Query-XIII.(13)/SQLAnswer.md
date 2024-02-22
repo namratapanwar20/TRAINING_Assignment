@@ -30,15 +30,17 @@ from
   order_header oh 
   join order_item oi on oh.order_id = oi.order_id 
   join product p on p.product_id = oi.product_id 
-  join facility f on p.facility_id = f.facility_id 
   join order_history ohist on oi.order_id = ohist.order_id 
   and oi.order_item_seq_id = ohist.order_item_seq_id 
-  and oi.order_item_seq_id = ohist.order_item_seq_id 
-  join order_status os on os.order_id = oh.order_id 
+  join order_item_ship_group_assoc oisga on oisga.order_id = oi.order_id 
+  and oisga.order_item_seq_id = oi.order_item_seq_id 
+  join order_item_ship_group oisg on oisg.order_id = oisga.order_id 
+  and oisg.ship_group_seq_id = oisga.ship_group_seq_id 
+  join facility f on f.facility_id = oisg.facility_id 
+  join order_status os on os.order_id = oh.order_id and oh.status_id=os.status_id
 where 
   MONTH(os.status_datetime)= 8 
   and YEAR(os.status_datetime)= 2023 
   and oh.status_id = "ORDER_COMPLETED" 
-group by 
-  oi.product_id;
+group by oh.order_id;
 ```
