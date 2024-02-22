@@ -1,4 +1,4 @@
-**13. Fetch all the products with their orders completed in August 2023.<br>
+**13. Fetch the following details with their orders completed in August 2023.<br>
 PRODUCT_ID <br>
 PRODUCT_TYPE_ID<br>
 PRODUCT_STORE_ID <br>
