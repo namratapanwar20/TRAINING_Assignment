@@ -2,7 +2,7 @@
 
 ```sql
 select 
-  count(oh.order_id) 
+  count(distinct oh.order_id) 
 from 
   order_header oh 
   join order_item oi on oh.order_id = oi.order_id 
