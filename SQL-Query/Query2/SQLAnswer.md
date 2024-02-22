@@ -2,11 +2,11 @@
 
 ```sql
 select 
-  count(distinct oh.order_id) 
+  count(distinct oh.order_id)
 from 
   order_header oh 
   join order_item oi on oh.order_id = oi.order_id 
-  join order_status os on os.order_id = oh.order_id 
+  join order_status os on os.order_id = oh.order_id  and oh.status_id=os.status_id
   join order_item_ship_group_assoc oisga on oisga.order_id = oi.order_id 
   and oisga.order_item_seq_id = oi.order_item_seq_id 
   and oisga.order_item_seq_id = oi.order_item_seq_id 
