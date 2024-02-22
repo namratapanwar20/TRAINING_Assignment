@@ -17,7 +17,7 @@ select
   p.product_id, 
   p.product_type_id, 
   oh.product_store_id, 
-  sum(quantity) as TOTAL_QUANTITY, 
+  sum(oi.quantity) as TOTAL_QUANTITY, 
   p.internal_name, 
   p.facility_id, 
   oi.external_id, 
@@ -33,13 +33,12 @@ from
   join facility f on p.facility_id = f.facility_id 
   join order_history ohist on oi.order_id = ohist.order_id 
   and oi.order_item_seq_id = ohist.order_item_seq_id 
-  join order_status os on oi.order_id = os.order_id 
-  and oi.status_id = os.status_id 
-  and oi.order_item_seq_id = os.order_item_seq_id 
+  and oi.order_item_seq_id = ohist.order_item_seq_id 
+  join order_status os on os.order_id = oh.order_id 
 where 
   MONTH(os.status_datetime)= 8 
   and YEAR(os.status_datetime)= 2023 
-  and oi.status_id = "ORDER_COMPLETED" 
+  and oh.status_id = "ORDER_COMPLETED" 
 group by 
   oi.product_id;
 ```
