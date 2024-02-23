@@ -32,12 +32,12 @@ FROM
   JOIN product p ON oi.product_id = p.product_id 
   JOIN product_type pt ON p.product_type_id = pt.product_type_id 
   JOIN order_status os ON oi.order_item_seq_id = os.order_item_seq_id 
-  and oi.status_id = os.status_id 
-  and oi.order_id = os.order_id 
-where 
+  AND oi.status_id = os.status_id 
+  AND oi.order_id = os.order_id 
+WHERE 
   pt.is_physical = "Y" 
-  and os.status_id = "ITEM_COMPLETED" 
-  and oh.product_store_id = "SM_STORE" 
-  and oh.order_type_id = "SALES_ORDER";
+  AND os.status_id = "ITEM_COMPLETED" 
+  AND oh.product_store_id = "SM_STORE" 
+  AND oh.order_type_id = "SALES_ORDER";
 
 ```
