@@ -14,7 +14,7 @@ ORDER_TYPE_ID<br>
 PRODUCT_STORE_ID** 
 
 ```sql
-SELECT 
+select
   oh.order_id, 
   oi.order_item_seq_id, 
   p.product_id, 
@@ -26,18 +26,18 @@ SELECT
   os.status_datetime, 
   oh.order_type_id, 
   oh.product_store_id 
-FROM 
+from 
   order_item oi 
-  JOIN order_header oh ON oi.order_id = oh.order_id 
-  JOIN product p ON oi.product_id = p.product_id 
-  JOIN product_type pt ON p.product_type_id = pt.product_type_id 
-  JOIN order_status os ON oi.order_item_seq_id = os.order_item_seq_id 
-  AND oi.status_id = os.status_id 
-  AND oi.order_id = os.order_id 
-WHERE 
+  join order_header oh ON oi.order_id = oh.order_id 
+  join product p ON oi.product_id = p.product_id 
+  join product_type pt ON p.product_type_id = pt.product_type_id 
+  join order_status os ON oi.order_item_seq_id = os.order_item_seq_id 
+  and oi.status_id = os.status_id 
+  and oi.order_id = os.order_id 
+where 
   pt.is_physical = "Y" 
-  AND os.status_id = "ITEM_COMPLETED" 
-  AND oh.product_store_id = "SM_STORE" 
-  AND oh.order_type_id = "SALES_ORDER";
+  and os.status_id = "ITEM_COMPLETED" 
+  and oh.product_store_id = "SM_STORE" 
+  and oh.order_type_id = "SALES_ORDER";
 
 ```
