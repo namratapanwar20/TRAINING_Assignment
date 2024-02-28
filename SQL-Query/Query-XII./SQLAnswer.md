@@ -4,16 +4,16 @@ select
   f.facility_id, 
   sum(oi.QUANTITY) as total 
 from 
-  order_header oh 
-  join order_item oi on oh.ORDER_ID = oi.ORDER_ID 
+  order_item oi
   join order_item_ship_group_assoc oisga on oisga.order_id = oi.order_id 
+  and oisga.order_item_seq_id = oi.order_item_seq_id
   join order_item_ship_group oisg on oisg.order_id = oisga.order_id 
   and oisg.ship_group_seq_id = oisga.ship_group_seq_id
-  join facility f on f.facility_id = oisg.facility_id 
+  join facility f on f.facility_id = oisg.facility_id and f.facility_id is not null
 where 
-  oh.STATUS_ID = 'ORDER_COMPLETED' 
+  oi.STATUS_ID = 'ITEM_COMPLETED'
 group by 
-  f.facility_id
+  oisg.facility_id
 order by 
   total desc 
 limit 
