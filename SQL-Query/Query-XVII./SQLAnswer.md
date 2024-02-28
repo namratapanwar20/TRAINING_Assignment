@@ -1,7 +1,7 @@
 **17. BOPIS orders Revenue in the last year:**
 ```sql
 select 
-  sum(oi.quantity * oi.unit_price) 
+  sum(oi.quantity * oi.unit_price) as Revenue 
 from 
   order_item oi 
   join order_header oh on oi.order_id = oh.order_id
