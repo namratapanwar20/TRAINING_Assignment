@@ -11,8 +11,9 @@ from
   join order_item_ship_group oisg on oisg.order_id = oisga.order_id 
   and oisg.ship_group_seq_id = oisga.ship_group_seq_id
   join facility f on f.facility_id = oisg.facility_id
+  join facility_type ft on f.facility_type_id = ft.facility_type_id
 where 
-  f.facility_type_id = "WAREHOUSE" 
+  ft.parent_type_id = "DISTRIBUTION_CENTER" 
   and oh.status_id = "ORDER_COMPLETED" 
   and os.status_datetime >= date_sub(
     CURDATE(), 
