@@ -3,7 +3,6 @@ Monthly
 
 ```sql
 select
-  extract(YEAR_MONTH from STATUS_DATE) as month
   count(SHIPMENT_ID)/ count(
     distinct extract(
       YEAR_MONTH 
