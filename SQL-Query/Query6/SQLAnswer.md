@@ -8,6 +8,7 @@ from
   order_item_ship_group oisg 
   join order_status os on oisg.order_id = os.order_id 
   join facility f on oisg.facility_id = f.facility_id 
+  join facility_type ft on f.facility_type_id = ft.facility_type_id 
 where 
   os.status_id = 'ORDER_COMPLETED' 
   and os.status_datetime >= DATE_SUB(
@@ -16,7 +17,7 @@ where
   ) 
   and os.status_datetime < CURDATE() 
   and oisg.shipment_method_type_id = 'NEXT_DAY' 
-  and f.facility_type_id in ('RETAIL_STORE', 'OUTLET_STORE') 
+  and ft.parent_type_id = "PHYSICAL_STORE" 
 group by 
   oisg.facility_id 
 order by 
