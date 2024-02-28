@@ -11,13 +11,11 @@ from
   and oisga.order_item_seq_id = oi.order_item_seq_id 
   join order_item_ship_group oisg on oisg.order_id = oisga.order_id 
   and oisg.ship_group_seq_id = oisga.ship_group_seq_id 
-  join facility f on f.facility_id = oisg.facility_id 
+  join facility f on f.facility_id = oisg.facility_id
+  join facility_type ft on ft.facility_type_id = f.facility_type_id
 where 
   oh.status_id = "ORDER_COMPLETED" 
   and os.STATUS_DATETIME >= '2024-01-01' - INTERVAL 25 DAY 
   and os.STATUS_DATETIME < '2024-01-01' 
-  and (
-    facility_type_id = "RETAIL_STORE" 
-    or facility_type_id = "OUTLET_STORE"
-  );
+  and ft.parent_type_id="PHYSICAL_STORE";
 ```
