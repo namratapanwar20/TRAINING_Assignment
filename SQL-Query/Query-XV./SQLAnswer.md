@@ -1,15 +1,13 @@
 **15. Shipping Revenue last month:**
 ```sql
 select 
-  sum(amount) as shipping_revenue 
+  sum(amount) as shipping_revenue
 from 
   order_adjustment 
 where 
-  created_date >= date_sub(
-    CURDATE(), 
-    INTERVAL 1 MONTH
-  ) 
-  and order_adjustment_type_id = 'SHIPPING_CHARGES';
+   created_date >= date_format(curdate() - interval 1 month, '%y-%m-01')
+   and created_date < date_format(curdate(), '%y-%m-01')
+   and order_adjustment_type_id = 'SHIPPING_CHARGES';
 ```
 ```sql
 select 
