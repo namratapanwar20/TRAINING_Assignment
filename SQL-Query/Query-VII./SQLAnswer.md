@@ -1,4 +1,5 @@
-**7. Payment captured but not shipped order items:**
+**7. Payment captured but not shipped order items:** <br>
+
 Using "not in" :
 
 ```sql
