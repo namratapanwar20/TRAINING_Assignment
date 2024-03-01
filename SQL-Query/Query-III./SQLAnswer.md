@@ -1,4 +1,5 @@
-**3. Average number of shipments per month:**
+**3. Average number of shipments per month:**<br>
+
 Monthly
 
 ```sql
