@@ -12,9 +12,7 @@ where
     from 
       order_header 
     where 
-      DATEDIFF(
-        CURDATE(), 
-        ENTRY_DATE
-      )<= 7
+      entry_date >= date_sub(curdate(), interval dayofweek(curdate())+7 day)
+      and entry_date < date_sub(curdate(), interval dayofweek(curdate()) day)
   );
 ```
