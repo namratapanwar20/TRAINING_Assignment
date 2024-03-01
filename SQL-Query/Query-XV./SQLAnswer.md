@@ -16,10 +16,8 @@ from
   order_adjustment oa 
   join order_header oh on oa.order_id = oh.order_id 
 where 
-  oa.created_date >= date_sub(
-    CURDATE(), 
-    INTERVAL 1 MONTH
-  ) 
+  oa.created_date >= date_format(curdate() - interval 1 month, '%y-%m-01')
+  and created_date < date_format(curdate(), '%y-%m-01')
   and oa.order_adjustment_type_id = 'SHIPPING_CHARGES' 
   and oh.status_id = 'ORDER_COMPLETED';
 ```
