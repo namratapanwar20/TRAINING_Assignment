@@ -15,10 +15,8 @@ from
 where 
   ft.parent_type_id = "DISTRIBUTION_CENTER" 
   and oh.status_id = "ORDER_COMPLETED" 
-  and os.status_datetime >= date_sub(
-    CURDATE(), 
-    INTERVAL 1 MONTH
-  ) 
+  and os.status_datetime >= date_format(curdate() - interval 1 month, '%y-%m-01')
+  and os.status_datetime < date_format(curdate(), '%y-%m-01')
 group by 
   oi.order_id 
 having 
