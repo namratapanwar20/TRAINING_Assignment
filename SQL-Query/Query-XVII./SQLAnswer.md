@@ -1,7 +1,7 @@
 **17. BOPIS orders Revenue in the last year:**
 ```sql
 select 
-  sum(oi.quantity * oi.unit_price) as Revenue 
+  sum(oi.unit_price*oi.quantity) as Revenue
 from 
   order_item oi 
   join order_header oh on oi.order_id = oh.order_id
@@ -11,8 +11,8 @@ from
   	and oisg.ship_group_seq_id = oisga.ship_group_seq_id
 where 
   oisg.shipment_method_type_id = 'STOREPICKUP' 
-  and oh.order_date >= date_sub(
+  and year(oh.order_date) = year(date_sub(
     CURDATE(), 
-    INTERVAL 1 YEAR
-  );
+    INTERVAL 1 year)
+  ); 
 ```
