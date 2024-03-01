@@ -11,11 +11,8 @@ from
   join facility_type ft on f.facility_type_id = ft.facility_type_id 
 where 
   os.status_id = 'ORDER_COMPLETED' 
-  and os.status_datetime >= DATE_SUB(
-    CURDATE(), 
-    INTERVAL 1 MONTH
-  ) 
-  and os.status_datetime < CURDATE() 
+  and os.status_datetime >= date_format(curdate() - interval 1 month, '%y-%m-01')
+  and os.status_datetime < date_format(curdate(), '%y-%m-01')
   and oisg.shipment_method_type_id = 'NEXT_DAY' 
   and ft.parent_type_id = "PHYSICAL_STORE" 
 group by 
